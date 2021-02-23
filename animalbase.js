@@ -15,10 +15,13 @@ const Animal = {
 function start() {
   console.log("ready");
 
-  // TODO: Add event-listeners to filter and sort buttons
+  // TODO: Add event-listeners to filter
   document.querySelector("#cat").addEventListener("click", clickCat);
   document.querySelector("#dog").addEventListener("click", clickDog);
   document.querySelector("#all").addEventListener("click", clickAll);
+
+  //and sort buttons
+  document.querySelectorAll("[data-action='sort']").forEach((button) => button.addEventListener("click", selectSort));
 
   loadJSON();
 }
@@ -86,6 +89,40 @@ function preapareObject(jsonObject) {
   animal.age = jsonObject.age;
 
   return animal;
+}
+
+function selectSort(event) {
+  const sortBy = event.target.dataset.sort;
+  console.log(`User selected ${sortBy}`);
+  sortList(sortBy);
+}
+
+function sortList(sortBy) {
+  let sortedList = allAnimals;
+
+  if (sortBy == "name") {
+    sortedList = sortedList.sort(sortByName);
+  } else if (sortBy == "type") {
+    sortedList = sortedList.sort(sortByType);
+  }
+
+  displayList(sortedList);
+}
+
+function sortByName(animalA, animalB) {
+  if (animalA.name < animalB.name) {
+    return -1;
+  } else {
+    return 1;
+  }
+}
+
+function sortByType(animalA, animalB) {
+  if (animalA.type < animalB.type) {
+    return -1;
+  } else {
+    return 1;
+  }
 }
 
 function displayList(animals) {
