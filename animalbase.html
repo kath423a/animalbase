@@ -11,9 +11,10 @@
     <h1>Animals</h1>
     <p>
       Filter:
-      <button class="filter" data-action="filter" id="cat">Only Cats</button>
-      <button class="filter" data-action="filter" id="dog">Only Dogs</button>
-      <button class="filter" data-action="filter" id="all">all</button>
+      <button class="filter" data-action="filter" data-filter="cat">Only Cats</button>
+      <button class="filter" data-action="filter" data-filter="dog">Only Dogs</button>
+      <button class="filter" data-action="filter" data-filter="star">Only Stars</button>
+      <button class="filter" data-action="filter" data-filter="*">all</button>
     </p>
 
     <hr />
@@ -22,10 +23,11 @@
       <thead>
         <tr id="sorting">
           <p>Click for sorting alphabetically</p>
-          <button data-action="sort" data-sort-direction="asc" data-sort="name">Name</button>
-          <button data-action="sort" data-sort-direction="asc" data-sort="type">Type</button>
-          <button data-action="sort" data-sort-direction="asc" data-sort="desc">Description</button>
-          <button data-action="sort" data-sort-direction="asc" data-sort="age">Age</button>
+          <th data-action="sort" data-sort-direction="asc" data-sort="star">Star</th>
+          <th data-action="sort" data-sort-direction="asc" data-sort="name">Name</th>
+          <th data-action="sort" data-sort-direction="asc" data-sort="type">Type</th>
+          <th data-action="sort" data-sort-direction="asc" data-sort="desc">Description</th>
+          <th data-action="sort" data-sort-direction="asc" data-sort="age">Age</th>
         </tr>
       </thead>
       <tbody>
@@ -35,6 +37,7 @@
 
     <template id="animal">
       <tr>
+        <td data-field="star">☆</td>
         <td data-field="name">NAME</td>
         <td data-field="type">TYPE</td>
         <td data-field="desc">DESCRIPTION</td>
